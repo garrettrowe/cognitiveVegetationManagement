@@ -20,8 +20,8 @@ var rootDir = './maps';
 var MIN_TILE_SIZE = 200;
 
 // PUT YOUR WATSON KEY AND CLASSIFIER ID HERE:
-var WATSON_KEY = "63f853c8a9a5551423ba09e22d9235e55405d318";
-var WATSON_CLASSIFIER = "veg_514009944";
+var WATSON_KEY = "";
+var WATSON_CLASSIFIER = "";
 
 var visual_recognition = new VisualRecognitionV3({
     api_key: WATSON_KEY,
