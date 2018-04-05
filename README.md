@@ -2,7 +2,7 @@
 
 Grid Resiliency starts with a Cognitive approach to tree management. North American Consumers are demanding higher levels of service from a power reliability and power quality. The DOE from a 2014 Campbell report estimates that Sustained and Momentary interruptions has an $80 billion economic impact annually. Vegetation based power interruptions have up to a 70% impact on annual SAIDI, CAIDI, and MAIFI. In this demo we look at how IBM Watson can help Energy and Utilitie companies manage dangerous vegetation along their powerline right-of-way by automatically identifying problem foliage. Use the navigational controls to move the map, and the slider to control the vegetation trigger level.  
 
-https://www.ibm.com/watson/services/visual-recognition Watson Visual Recognition powers this solution.  Visual Recognition understands the contents of images. Analyze images for scenes, objects, faces, colors, food, text, explicit content and other subjects that can give you insights into your visual content. Customize Watson perfectly for your unique use case. With only a few images, Watson can learn any new object, person, or attribute.
+[Watson Visual Recognition] (https://www.ibm.com/watson/services/visual-recognition) powers this solution.  Visual Recognition understands the contents of images. Analyze images for scenes, objects, faces, colors, food, text, explicit content and other subjects that can give you insights into your visual content. Customize Watson perfectly for your unique use case. With only a few images, Watson can learn any new object, person, or attribute.
 
 See this demo live here:  https://vegetationmanagement.mybluemix.net/
 
@@ -12,6 +12,7 @@ See this demo live here:  https://vegetationmanagement.mybluemix.net/
 * [Watson Visual Recognition API Reference](https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/)
 * [Watson Visual Recognition Custom Classifiers](https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/#classifiers)
 * [Best Practices Creating Custom Classifiers] (https://www.ibm.com/blogs/bluemix/2016/10/watson-visual-recognition-training-best-practices/)
+* [Visual-Recognition-Tile-Localization](https://github.com/IBM-Cloud/Visual-Recognition-Tile-Localization)
 
 
 ### Train your own Watson Visual Recognition Model
