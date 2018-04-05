@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vegetation Management Demo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>$.get( "https://commscalendarapi.mybluemix.net/nav", function(data){$("body").prepend(data);});</script>
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="./scripts/client.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+
+<body>
+        <div class="jumbotron">
+      <div class="container">
+        <br></br>
+            <div class="col-md-2 hidden-xs">
+                <p><img src='https://www.ibm.com/blogs/cloud-computing/wp-content/uploads/2014/03/logo.png' width="200px" class="img-fluid" alt="Responsive image"></p>
+            </div>
+
+            <div class="col-md-7">
+                <p class="a">
+                <b>Cognitive Vegetation Optimization</b>
+                <p class="size">Grid Resiliency starts with a Cognitive approach to tree management. North American Consumers are demanding higher levels of service from a power reliability and power quality. The DOE from a 2014 Campbell report estimates that Sustained and Momentary interruptions has an $80 billion economic impact annually. Vegetation based power interruptions have up to a 70% impact on annual SAIDI, CAIDI, and MAIFI. In this demo we look at how IBM Watson can help Energy and Utilitie companies manage dangerous vegetation along their powerline right-of-way by automatically identifying problem foliage. Use the navigational controls <i class="fa fa-angle-left" aria-hidden="true"></i> <i class="fa fa-dot-circle-o" aria-hidden="true"></i> <i class="fa fa-angle-right" aria-hidden="true"></i> to move the map, and the slider to control the vegetation trigger level.  
+                <br></br>
+                <a href="https://www.ibm.com/watson/services/visual-recognition/">Watson Visual Recognition</a> powers this solution.  Visual Recognition understands the contents of images. Analyze images for scenes, objects, faces, colors, food, text, explicit content and other subjects that can give you insights into your visual content. Customize Watson perfectly for your unique use case. With only a few images, Watson can learn any new object, person, or attribute.
+                </p>
+            </div>
+            <div class="col-md-3">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <video width="320" height="240" controls>
+                      <source src="https://ibm.box.com/shared/static/nl1pkxd8scom742wculx3ctppx4xk5r4.mp4" type="video/mp4">
+                    IBM Watson Demos
+                    </video> 
+                </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div id = "renderparent" class="">
+                    <div id="render" >
+                        <img id="myMap" src="" />
+                        <table id="vegTable"></table>
+                        <div id="waitOverlay"><i class="fa fa-cog fa-spin fa-5x fa-fw"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Map & Overlay Control</div>
+                    <div class="panel-body">
+                        
+                        <div class="lfloat">
+                            <table id="mapNav">
+                                <tr></tr>
+                                    <td></td><td><button id="bUp"  type="button" class="btn btn-primary horiz"><i class="fa fa-angle-up" aria-hidden="true"></i></button></td><td></td>
+                                <tr></tr>
+                                    <td><button id="bLeft" type="button" class="btn btn-primary vert"><i class="fa fa-angle-left" aria-hidden="true"></i></button></td><td><button id="bCent" type="button" class="btn btn-primary vert"><i class="fa  fa-dot-circle-o " aria-hidden="true"></i></button></td><td><button id="bRight" type="button" class="btn btn-primary vert"><i class="fa fa-angle-right" aria-hidden="true"></i></button></td>
+                                <tr></tr>
+                                    <td></td><td><button id="bDown" type="button" class="btn btn-primary horiz"><i class="fa fa-angle-down" aria-hidden="true"></i></button></td><td></td>
+                            </table>   
+                        </div>
+                        <div class="lfloat overlayT">
+                            Overlay&nbsp;&nbsp;<input id="overlayToggle" type="checkbox" checked data-toggle="toggle" data-onstyle="info" data-offstyle="danger" data-on="On" data-off="Off">
+                        </div>
+                        <div class="lfloat cSlide">
+                            <input id="clipSlider" data-slider-min="0.0" data-slider-max="0.95" data-slider-step="0.01" data-slider-value="0.8" /><br>Clip Level
+                        </div>
+                    </div>               
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Vegetation Metrics</div>
+                    <div class="panel-body">
+                        <span class="lfloat">Min:&nbsp;</span><span id="tileMin" class="lfloat">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="lfloat">&nbsp;&nbsp;&nbsp;</span>
+                        <span class="lfloat">Max:&nbsp;</span><span id="tileMax" class="lfloat">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="lfloat">&nbsp;&nbsp;&nbsp;</span>
+                        <span class="lfloat">Average:&nbsp;</span><span id="tileAvg" class="lfloat">&nbsp;&nbsp;</span>
+                    </div>               
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Processing Status</div>
+                    <div class="panel-body" id="feedback" style="height: 260px;overflow:hidden;"></div>               
+                </div>
+            </div>
+        </div>
+      <hr>
+      <footer>
+        <p>&copy; 2018 IBM
+        <a class="btn btn-default pull-right" target="_blank" href="https://github.com/garrettrowe/cognitiveVegetationManagement">
+        <i class="fa fa-github fa-2x pull-left"></i>Get the Code</a></p>
+      </footer>
+    </div> 
+</body>
+
+
+</html>
