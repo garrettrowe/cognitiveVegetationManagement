@@ -1,0 +1,72 @@
+/* style.css
+ * This file provides css styles.
+ */
+
+ #renderparent{
+    padding-top: 30px;
+    padding-left: 30px;
+ }
+ .overlayT{
+    padding-left: 50px;
+ }
+ .cSlide{
+    padding-left: 20px;
+    padding-top: 20px;
+    text-align: center;
+ }
+
+ hr {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.overlayT{
+    z-index:999;
+}
+.lfloat{
+   float:left; 
+}
+
+#myMap{
+    width: 300px;
+    height: 300px;
+}
+.oCell{
+    width: 50px;
+    height: 50px;
+}
+
+.cellHidden{
+    opacity:0 !important;
+}
+
+#render {
+    position: relative;
+}
+
+
+#vegTable {
+    table-layout: fixed;
+    position:absolute;
+    top: 0px;
+    color:white;
+}
+
+#waitOverlay{
+    position:absolute;
+    top: 0px;
+    z-index:9999;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px; 
+}
+
+
+#render table tr td {
+    border: 1px dashed rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 10px;
+}
