@@ -12,7 +12,7 @@ See this demo live here:  https://vegetationmanagement.mybluemix.net/
 * [Watson Visual Recognition API Reference](https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/)
 * [Watson Visual Recognition Custom Classifiers](https://www.ibm.com/watson/developercloud/visual-recognition/api/v3/#classifiers)
 * [Best Practices Creating Custom Classifiers](https://www.ibm.com/blogs/bluemix/2016/10/watson-visual-recognition-training-best-practices/)
-* [Visual-Recognition-Tile-Localization](https://github.com/IBM-Cloud/Visual-Recognition-Tile-Localization)
+* [Visual Recognition Tile Localization](https://github.com/IBM-Cloud/Visual-Recognition-Tile-Localization)
 
 
 ### Train your own Watson Visual Recognition Model
